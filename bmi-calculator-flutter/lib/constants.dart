@@ -25,13 +25,26 @@ const kTitleTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-const kResultTextStyle = TextStyle(
+const kNormalResultTextStyle = TextStyle(
   color: Color(0xFF24D876),
-  fontSize: 22.0,
+  fontSize: 100.0,
   fontWeight: FontWeight.bold,
 );
-const kBMITextStyle = TextStyle(
+
+const kOverResultTextStyle = TextStyle(
+  color: Color(0xFFEB1555),
   fontSize: 100.0,
+  fontWeight: FontWeight.bold,
+);
+
+const kLowResultTextStyle = TextStyle(
+  color: Color(0xFF1ba1e2),
+  fontSize: 100.0,
+  fontWeight: FontWeight.bold,
+);
+
+const kBMITextStyle = TextStyle(
+  fontSize: 50.0,
   fontWeight: FontWeight.bold,
 );
 

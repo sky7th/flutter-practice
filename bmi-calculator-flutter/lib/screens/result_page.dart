@@ -4,28 +4,44 @@ import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/components/bottom_button.dart';
 
 class ResultPage extends StatelessWidget {
+  ResultPage({this.bmiResult, this.resultText, this.interpretation});
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
-      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
-            child: Container(
-              padding: EdgeInsets.all(15.0),
-              alignment: Alignment.bottomCenter,
-              child: Text(
-                '당신의 결과',
-                style: kTitleTextStyle,
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(top: 10.0),
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
+                    'BMI',
+                    style: kTitleTextStyle,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 20.0),
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
+                    bmiResult,
+                    style: kBMITextStyle,
+                  ),
+                ),
+              ],
             ),
           ),
           Expanded(
-            flex: 5,
+            flex: 2,
             child: ReusableCard(
               colour: kActiveCardColour,
               cardChild: Column(
@@ -33,15 +49,11 @@ class ResultPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Normal',
-                    style: kResultTextStyle,
+                    resultText,
+                    style: kNormalResultTextStyle,
                   ),
                   Text(
-                    '18.0',
-                    style: kBMITextStyle,
-                  ),
-                  Text(
-                    '넘 말랐는디 팍팍 좀 드세여',
+                    interpretation,
                     textAlign: TextAlign.center,
                     style: kBodyTextStyle,
                   )

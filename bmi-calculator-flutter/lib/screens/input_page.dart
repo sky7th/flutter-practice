@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/calculator_brain.dart';
 import 'package:bmi_calculator/components/bottom_button.dart';
 import 'package:bmi_calculator/screens/result_page.dart';
 import 'package:bmi_calculator/components/round_icon_button.dart';
@@ -116,7 +117,7 @@ class _InputPageState extends State<InputPage> {
                       thumbShape:
                           RoundSliderThumbShape(enabledThumbRadius: 15.0),
                       overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 30.0),
+                          RoundSliderOverlayShape(overlayRadius: 23.0),
                     ),
                     child: Slider(
                       value: height.toDouble(),
@@ -228,8 +229,19 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             buttonTitle: '계산하기',
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ResultPage()));
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(
+                        bmiResult: calc.calculateBMI(),
+                        resultText: calc.getResult(),
+                        interpretation: calc.getInterpretation(),
+                      ),
+                ),
+              );
             },
           )
         ],
